@@ -1,0 +1,525 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Lichte achtergrondkleur */
+    min-height: 200vh; /* Zorgt ervoor dat de pagina lang genoeg is om te scrollen */
+}
+
+.header {
+    grid-column: 1 / 4;
+    background-color: #003366; /* Donkerblauw voor de header */
+    color: white; /* Witte tekstkleur */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 16px;
+    top: 0;
+    left: 0;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optioneel: schaduw voor extra diepte */
+}
+
+/* Zorg ervoor dat de content niet onder de header verdwijnt */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    
+    min-height: 100vh; /* Zorg ervoor dat container minimaal de hoogte van het scherm heeft */
+    position: relative; /* Voor positionering van de afbeelding */
+}
+
+
+
+
+.sidebar-left {
+    grid-column: 1 / 2;
+    background-color: #ffcccc; /* Lichtrood voor de sidebar-left */
+    padding: 20px;
+    border-radius: 8px;
+    align-self: start;
+    position: static; /* Verwijder sticky position om niet vast te blijven staan */
+    top: 120px; /* Houdt rekening met de hoogte van de header */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-left .block {
+    margin-top: 20px; /* Ruimte boven elk blok */
+}
+
+.sidebar-left .block a {
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 16px;
+    width: 80%;
+    display: block;
+    text-align: center;
+    color: white; /* Witte tekstkleur */
+    background-color: #b30000; /* Donkerrood achtergrondkleur */
+    font-weight: bold;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto; /* Ruimte boven en onder het blok en centreren */
+}
+.hover-effect {
+    font-size: 16px; /* Normale grootte */
+    transition: font-size 0.3s ease; /* Soepele overgang */
+  }
+
+.hover-effect:hover {
+    font-size: 18px; /* Grotere grootte bij hover */
+  }
+button {
+    background-color: #4CAF50; /* Groene achtergrond */
+    border: none; /* Geen rand */
+    color: white; /* Witte tekst */
+    padding: 8px 16px; /* Kleinere binnenruimte */
+    text-align: center; /* Tekst centreren */
+    text-decoration: none; /* Geen onderstreping */
+    display: inline-block; /* Inline element */
+    font-size: 14px; /* Iets kleinere lettergrootte */
+    border-radius: 6px; /* Afronde hoeken */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Soepele overgang */
+    cursor: pointer; /* Verander cursor naar pointer */
+}
+
+button:hover {
+    background-color: #45a049; /* Donkerder groen bij hover */
+    transform: scale(1.05); /* Knop wordt iets groter */
+}
+
+button:active {
+    background-color: #397d3f; /* Nog donkerder groen bij klikken */
+    transform: scale(0.98); /* Klein beetje inzoomen bij klikken */
+}
+
+
+
+.sidebar-right {
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ruimte tussen de blokken */
+    padding: 20px; /* Ruimte rond de binnenkant van de sidebar */
+    position: static; /* Verwijder sticky position om niet vast te blijven staan */
+    top: 120px; /* Houdt rekening met de hoogte van de header */
+    background-color: #003366; /* Donkerblauw voor de sidebar-right */
+    border-radius: 8px; /* Ronde hoeken voor de sidebar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schaduw voor de sidebar */
+}
+
+.sidebar-right .block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background-color: #b30000; /* Donkerrood achtergrondkleur van het blok */
+    color: white; /* Witte tekstkleur */
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: calc(100% - 20px); /* Breedte met ruimte aan beide zijden */
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+
+.sidebar-right .block:hover {
+    background-color: #cc0000; /* Iets donkerder rood bij hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Versterkt de schaduw bij hover */
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); 
+}
+
+/* Modal Content */
+.modal-content {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Zorgt ervoor dat de afbeelding volledig zichtbaar blijft zonder vervorming */
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center; /* Center de afbeelding horizontaal */
+    align-items: center; /* Center de afbeelding verticaal */
+    position: absolute;
+    bottom: 20px; /* Ruimte vanaf de onderkant van de container */
+    left: 0;
+    right: 0; /* Zorgt ervoor dat de container de volledige breedte van main heeft */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.image-container img {
+    max-width: 40%; /* Maak de afbeelding kleiner dan 60% */
+    height: auto; /* Behoud de verhouding van de afbeelding */
+    margin-top: 50px; 
+}
+
+#inhoud-versnellen {
+    margin-top: 30px; /* Adjust this value to move the text down */
+}
+
+.content {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.content .block {
+    padding: 20px;
+    width: 60%;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #ffffff; /* Witte achtergrondkleur voor de contentblokken */
+    color: #003366; /* Donkerblauwe tekstkleur */
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content .block:hover {
+    background-color: #e6e6e6; /* Lichte grijze achtergrond bij hover */
+}
+
+.extra-content {
+    display: flex;
+    flex-direction: column; /* Zorgt ervoor dat secties onder elkaar komen */
+    gap: 20px; /* Ruimte tussen de secties */
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin: 20px 0;
+    border: 1px solid #ddd; /* Optioneel: voeg een rand toe voor visuele scheiding */
+    height: 1000px; 
+    border: 2px solid #ddd; /* Lichtgrijze rand */
+      
+    
+}
+
+.extra-content > div {
+    flex: 1; /* Zorgt ervoor dat alle secties even groot zijn */
+    padding: 20px;
+    border-radius: 8px;
+    background-color:white; /* Witte achtergrondkleur voor de secties */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.footer {
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    position: fixed; /* Blijft onderaan vast staan */
+    bottom: 0;
+    width: 100%;
+    background-color: #003366; /* Donkerblauw voor de footer */
+    color: white; /* Witte tekstkleur */
+    padding: 10px 0;
+}
+
+.footer .block {
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    background-color: #b30000; /* Donkerrood achtergrondkleur voor de footerblokken */
+    font-weight: bold;
+    color: white; /* Witte tekstkleur voor de footerblokken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer .block a {
+    color: white; /* Witte tekstkleur voor de footer links */
+    text-decoration: none; /* Optioneel, verwijdert onderstreping van links */
+}
+
+.hidden-content {
+    display: none;
+    background-color: #f5f5f5; /* Lichte achtergrondkleur */
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: max-height 0.5s ease-out;
+    overflow: hidden;
+    max-height: 0;
+}
+
+.block.expanded + .hidden-content {
+    display: block;
+    max-height: 500px; /* Geef hier meer ruimte aan */
+}
+
+.block.expanded {
+    padding-bottom: 40px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sidebar-left, .sidebar-right {
+        grid-column: 1 / 2;
+    }
+
+    .content {
+        grid-column: 1 / 2;
+    }
+
+    .footer {
+        flex-direction: column;
+        grid-column: 1 / 2;
+    }
+
+    .content .block {
+        width: 80%; /* Breder op mobiel */
+}
+
+
+
+}
+#extra-sectie-2 {
+    background-color: white; 
+    padding: 20px; /* Ruimte binnen de sectie */
+    border-radius: 10px; /* Afgeronde hoeken voor een zachter effect */
+    border: 2px solid #ddd; /* Lichtgrijze rand */
+}
+
+
+#extra-sectie-2 h1 {
+    color: #003366;
+    font-size: xx-large  ;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+}
+
+.namen {
+    display: flex;
+    justify-content: space-between;
+}
+
+#extra-sectie-2 .namen h1 {
+    color: black;
+    font-size: x-large;
+}
+
+.profile {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 5px; /* Voeg een beetje ruimte tussen de profielafbeeldingen toe */
+}
+
+.profile-container h1 {
+    color: white;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 80px; /* Verklein de breedte van de afbeelding */
+    height: 80px; /* Verklein de hoogte van de afbeelding */
+    transition: filter 0.3s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Zorg ervoor dat de achtergrondkleur correct is */
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+    color: darkblue;
+    font-size: 14px; /* Pas de tekstgrootte aan indien nodig */
+}
+
+/* Toon overlay bij hover */
+.profile:hover .overlay {
+    opacity: 1;
+}
+
+.profile:hover .profile-img {
+    filter: none; /* Verwijder grijstinten bij hover */
+}
+
+
+
+
+
+
+#extra-sectie-4 {
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.vak {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.vak h3 {
+    margin-top: 0;
+}
+
+.vak-info p {
+    margin: 10px 0;
+}
+#extra-sectie-4 {
+    padding: 20px;
+    background-color: #f0f0f0; /* Lichtgrijze achtergrond voor de sectie */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.vak {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #ffffff; /* Witte achtergrond voor de vakken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schaduw voor een diepte-effect */
+}
+
+.vak h3 {
+    margin-top: 0;
+    color: #0033cc; /* Donkerblauw voor de titels */
+    font-size: 1.5em;
+}
+
+.vak-info {
+    color: #333333; /* Zwart voor de tekst */
+}
+
+.vak-info p:first-of-type {
+    font-weight: bold;
+    color: #cc0000; /* Rood voor de eerste regel van informatie */
+}
+
+.vak-info p {
+    margin: 10px 0;
+}
+
+.vak:hover {
+    background-color: #e6f7ff; /* Lichtblauwe achtergrond bij hover */
+    border-color: #0033cc; /* Donkerblauwe border bij hover */
+    cursor: pointer; /* Verander de cursor naar pointer bij hover */
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Eén kolom op kleinere schermen */
+    }
+}
+
+#extra-sectie-5 {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#extra-sectie-5 h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+#extra-sectie-5 p {
+    margin: 0;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #333; /* Pas aan voor andere kleuren */
+    text-decoration: none;
+    border-radius: 50%;
+    transition: color 0.3s, transform 0.3s;
+    z-index: 10; /* Test voor overlappingen */
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon .fa-instagram {
+    color: #C13584;
+}
+
+.social-icon .fa-linkedin {
+    color: #0077b5;
+}
+
+.social-icon .fa-facebook-f {
+    color: #4267B2;
+}
+
+.social-icon .fa-twitter {
+    color: #1DA1F2;
+}

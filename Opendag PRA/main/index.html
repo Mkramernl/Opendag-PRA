@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persoonlijke Pagina</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        
+        .extra-content {
+            height: 1000px; /* Pas deze waarde aan voor meer of minder hoogte */
+            background-color: #f0f0f0;
+            margin: 20px 0;
+        }
+        .image-container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="container">
+            <div class="header">
+                <h1>Curio</h1>
+                <h2>Opendag Software Developer</h2>
+                <h3>Mike Kramer <br> 23a</h3>
+            </div>
+
+            <div class="sidebar-left">
+                <h3>Vakken Eerstejaars:</h3>
+                <ul>
+                    <li>Taal - Nederlands</li>
+                    <li>Taal - Engels</li>
+                    <br>
+                    <li>PRA - Praktijk</li>
+                    <li>PRO - Programmeren</li>
+                    <br>
+                    <li>WEB - Webdevelopment</li>
+                    <li>NAV - Programmeertaal</li>
+                    <br>
+                    <li>Mentoruur - Gesprekken</li>
+                    <li>Codelab - Projectuur</li>
+                    <div class="vak-info">
+                    <button onclick="scrollToVakken()">Meer info</button>
+                    </div>
+                </ul>
+
+                <div class="block">
+                    <a href="mening.html" class="hover-effect">Mening studenten</a>
+
+
+
+                </div>
+            </div>
+
+           <div class="content">
+                <div class="block">Indeling Blokken</div>
+                <div class="block">Smoelenboek Docenten</div>
+                <div class="block">Vakanties</div>
+            </div>
+
+            <div class="sidebar-right">
+                <div class="block" onclick="scrollToImage('image-eerstejaars')">Rooster Eerstejaars</div>
+                
+                <div class="block">
+                    <img id="thumbnail" src="../img/Rooster eerste leerjaar.png" width="200" height="200" alt="rooster">
+
+                </div>
+            </div>
+        
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImg">
+            </div>
+            
+
+            <div id="inhoud-versnellen">
+                <p></p>
+            </div>
+
+            <!-- Extra lange secties toegevoegd voor meer ruimte om te scrollen -->
+            <div class="extra-content">
+                <div id="extra-sectie-1">
+                    <h2>Blokken A & B voor Eerstejaars</h2>
+                    <embed src="../img/Bloka.png" type="application/pdf" width="400" height="500" alt="Blok A">
+                    <embed src="../img/Blokb.png" type="application/pdf" width="400" height="500" alt="Blok B">
+                </div>
+                <br>
+                <br>
+                <div id="extra-sectie-2">
+                    <h1>Docenten</h1>
+                    <div class="namen">
+                        <h1>Eva</h1>
+                        <h1>Steven</h1>
+                        <h1>Joep</h1>
+                        <h1>Jip</h1>
+                        <h1>Quincy</h1>
+                    </div>
+                    <div class="namen">
+                        
+                    </div>
+                    <div class="profile-container">
+                        <div class="profile">
+                            <img src="../img/vrouw.svg" alt="" class="profile-img">
+                            <div class="overlay">
+                                
+                            </div>
+                        </div>
+                        <div class="profile">
+                            <img src="../img/docent.svg" alt="Person 2" class="profile-img">
+                            <div class="overlay">
+                                
+                            </div>
+                        </div>
+                        <div class="profile">
+                            <img src="../img/docent2.svg" alt="Person 3" class="profile-img">
+                            <div class="overlay">
+                                
+                            </div>
+                        </div>
+                        <div class="profile">
+                            <img src="../img/Docent3.svg" alt="Person 4" class="profile-img">
+                            <div class="overlay">
+                                
+                            </div>
+                        </div>
+                        <div class="profile">
+                            <img src="../img/Docent4.svg" alt="Person 5" class="profile-img">
+                            <div class="overlay">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <br>
+                <br>
+                <div id="extra-sectie-3">
+                    <h2>Versnellen?</h2>
+                    <p>Op deze opleiding bij Curio is er een mogelijkheid om de opleiding versneld af te ronden. Dit betekent Dat je in 3 jaar klaar bent i.p.v. 4 jaar.
+                    Tijdens het versnellen ga je wat sneller door de stof heen. Ook sla je blok E over, en worden blok F en blok G samen gevoegd tot 1 jaar.
+                    </p>
+                    <img src="../img/Opleidingsoverzicht3.png" type="application/pdf" width="800" height="400" alt="rooster" alt="overzicht">
+                    
+                </div>
+                <br>
+                <br>
+                <div id="extra-sectie-4">
+                    <div id="vakken-info">
+                    <h2>Informatie over de vakken</h2>
+                        <div class="grid-container">
+                            <div class="vak">
+                                <h3>Taal</h3>
+                                <div class="vak-info">
+                                    <p>Nederlands<span> <img src="../img/vecteezy_dutch-flag-vector-icon-the-flag-of-the-netherlands_5720275.jpg" type="application/pdf" width="15" height="12" alt="NLvlag"></span></p>
+                                    <p>Het vak Nederlands op MBO-niveau versterkt je taalvaardigheden voor een effectieve communicatie in de praktijk. Je leert correcte grammatica, spelling, en zakelijke correspondentie, wat essentieel is voor je toekomstige carrière.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3></h3>
+                                <div class="vak-info">
+                                    <p>Engels<span> <img src="../img/Vector_illustration_of_the_United_Kingdom_flag_generated.jpg" type="application/pdf" width="15" height="12" alt="NLvlag"></span></p>
+                                    <p>In dit vak verbeter je je Engelse taalvaardigheden, zowel in schrift als in spraak. Het richt zich op grammatica, woordenschat, en praktische communicatievaardigheden in een internationale context.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3>Praktijk </h3>
+                                <div class="vak-info">
+                                    <p>PRA</p>
+                                    <p>Praktische vaardigheden voor je toekomstige carrière worden hier ontwikkeld, met een focus op hands-on ervaring en real-world toepassingen.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3></h3>
+                                <div class="vak-info">
+                                    <p>PRO</p>
+                                    <p>Geavanceerdere praktijkopdrachten waarbij je de eerder opgedane kennis toepast en verder uitbouwt.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3>Programmeren </h3>
+                                <div class="vak-info">
+                                    <p>WEB</p>
+                                    <p>Leer de basis van webontwikkeling, inclusief HTML, CSS, en JavaScript. Ontwikkel de vaardigheden om een eenvoudige website te bouwen.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3></h3>
+                                <div class="vak-info">
+                                    <p>NAV</p>
+                                    <p>Verdiep je in meer geavanceerde programmeertechnieken en navigeer door complexe projecten en databases.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3>Zelfontwikkeling </h3>
+                                <div class="vak-info">
+                                    <p>Mentoruur</p>
+                                    <p>Een uur per week voor persoonlijke begeleiding en ontwikkeling, waarbij je kunt werken aan je leerdoelen en eventuele uitdagingen kunt bespreken.</p>
+                                </div>
+                            </div>
+                            <div class="vak">
+                                <h3></h3>
+                                <div class="vak-info">
+                                    <p>Codelab</p>
+                                    <p>Een praktische labomgeving waar je kunt experimenteren met code, je vaardigheden kunt verbeteren, en samen kunt werken aan programmeringsprojecten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <br>
+                <br>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+                <div id="extra-sectie-5">
+                    <h2>Onze Socials</h2>
+                    <p>
+                        <a href="https://www.instagram.com/curioonderwijsgroep/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/curioonderwijs" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/school/curioonderwijsgroep/posts/?feedView=all" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/i/flow/login?redirect_after_login=%2Fcurioonderwijs" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </p>
+                    <p>Voor verdere informatie kunt u terecht bij <strong>Contact & Hulp.</strong></p>
+                </div>
+                <br>
+                <br>
+                
+                <div class="extra-sectie-6">
+                    <h2></h2>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="block">
+                    <a href="contact&hulp.html">Contact & Hulp</a>
+                </div>
+                
+                    
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Jouw footerinhoud hier -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

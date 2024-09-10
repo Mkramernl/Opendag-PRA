@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Lichte achtergrondkleur */
+    min-height: 200vh; /* Zorgt ervoor dat de pagina lang genoeg is om te scrollen */
+}
+
+.header {
+    grid-column: 1 / 4;
+    background-color: #003366; /* Donkerblauw voor de header */
+    color: white; /* Witte tekstkleur */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 16px;
+    position: fixed; /* Blijft bovenaan vast staan */
+    width: 100%;
+    height: 80px; /* Specifieke hoogte voor de header (pas aan indien nodig) */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Zorg ervoor dat de header boven andere elementen staat */
+    padding: 0 20px; /* Padding om ruimte te geven rondom de inhoud */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optioneel: schaduw voor extra diepte */
+}
+header a{
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+
+.container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Lichtgrijze achtergrond voor de container */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schaduw voor een diepte-effect */
+}
+
+h1 {
+    color: #0033cc; /* Donkerblauw voor de hoofdtitel */
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.opinies {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+
+.opinion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #ffffff; /* Witte achtergrond voor de meningen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schaduw voor een diepte-effect */
+}
+
+.opinion h2 {
+    margin-top: 0;
+    color: #cc0000; /* Rood voor de subtitels */
+    font-size: 1.5em;
+}
+
+.opinion p {
+    color: #333333; /* Zwart voor de tekst */
+    line-height: 1.6;
+}
+
+.opinion:hover {
+    background-color: #e6f7ff; /* Lichtblauwe achtergrond bij hover */
+    border-color: #0033cc; /* Donkerblauwe border bij hover */
+    cursor: pointer; /* Verander de cursor naar pointer bij hover */
+}
+
+@media (min-width: 768px) {
+    .opinies {
+        grid-template-columns: repeat(2, 1fr); /* Twee kolommen bij bredere schermen */
+    }
+}
+
+@media (min-width: 1024px) {
+    .opinies {
+        grid-template-columns: repeat(3, 1fr); /* Drie kolommen bij nog bredere schermen */
+    }
+}
+
+
+h1 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.footer {
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    position: fixed; /* Blijft onderaan vast staan */
+    bottom: 0;
+    width: 100%;
+    background-color: #003366; /* Donkerblauw voor de footer */
+    color: white; /* Witte tekstkleur */
+    padding: 10px 0;
+}
+
+.footer .block {
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    background-color: #b30000; /* Donkerrood achtergrondkleur voor de footerblokken */
+    font-weight: bold;
+    color: white; /* Witte tekstkleur voor de footerblokken */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer .block a {
+    color: white; /* Witte tekstkleur voor de footer links */
+    text-decoration: none; /* Optioneel, verwijdert onderstreping van links */
+}
+
+.hidden-content {
+    display: none;
+    background-color: #f5f5f5; /* Lichte achtergrondkleur */
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: max-height 0.5s ease-out;
+    overflow: hidden;
+    max-height: 0;
+}
